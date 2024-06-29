@@ -1,9 +1,15 @@
 import Page from '../../components/Page';
 import ListView from '../../components/ListView';
+import { Button } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 function Allocation() {
   return (
-    <Page title='Allocations'>
+    <Page title='Allocations' rightNode={
+      <Button as={Link} to='/allocation/create' colorScheme='facebook' mr={10}>
+        New Allocation
+      </Button>
+    }>
       <ListView
         resource='allocations'
         tableProps={{
