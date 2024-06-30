@@ -10,8 +10,9 @@ function Course() {
         New Course
       </Button>
     }>
+      
       <ListView
-        resource='Courses'
+        resource='courses'
         tableProps={{
           columns: [
             {
@@ -25,6 +26,8 @@ function Course() {
           ],
         }}
       />
+    <br />
+    <b>* Cursos com allocation já definidas não podem ser deletados.</b>
     </Page>
   );
 }

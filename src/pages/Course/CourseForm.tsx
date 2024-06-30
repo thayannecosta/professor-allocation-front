@@ -80,7 +80,7 @@ export default function CourseForm() {
       status: 'success',
     });
 
-    navigate('/courses');
+    navigate('/course');
   }
 
   return (
@@ -94,7 +94,7 @@ export default function CourseForm() {
         </FormControl>
 
         <Stack display='flex' flexDirection='row'>
-          <Button as={Link} to='/courses'>
+          <Button as={Link} to='/course'>
             Cancel
           </Button>
           <Button colorScheme='facebook' onClick={handleSubmit(onSubmit)}>

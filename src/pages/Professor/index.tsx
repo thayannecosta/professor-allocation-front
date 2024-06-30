@@ -31,7 +31,7 @@ function Professor() {
               label: 'CPF',
             },
             {
-              key: 'department',
+              key: 'dpt',
               label: 'Department',
               render: (department) => {
                 return <span style={{ color: 'red' }}>{department.name}</span>;
@@ -40,6 +40,8 @@ function Professor() {
           ],
         }}
       />
+    <br />
+    <b>* Professores com allocation já definidas não podem ser deletados.</b>
     </Page>
   );
 }

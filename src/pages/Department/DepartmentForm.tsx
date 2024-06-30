@@ -80,7 +80,7 @@ import {
         status: 'success',
       });
   
-      navigate('/departments');
+      navigate('/department');
     }
   
     return (

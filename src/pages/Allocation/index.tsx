@@ -19,15 +19,15 @@ function Allocation() {
               label: 'ID',
             },
             {
+              key: 'day',
               label: 'Day Of Week',
-              key: 'dayOfWeek',
             },
             {
-              key: 'startHour',
+              key: 'start',
               label: 'Start Hour',
             },
             {
-              key: 'endHour',
+              key: 'end',
               label: 'End Hour',
             },
             {

@@ -27,7 +27,7 @@ interface Department {
 const schema = z.object({
   name: z.string().min(3),
   cpf: z.string().min(1).max(11),
-  departmentId: z.string().min(1),
+  dptId: z.string().min(1),
 });
 
 export default function ProfessorForm() {
@@ -48,7 +48,7 @@ export default function ProfessorForm() {
     if (professor) {
       setValue('name', professor.name);
       setValue('cpf', professor.cpf);
-      setValue('departmentId', professor?.department?.id);
+      setValue('dptId', professor?.department?.id);
     }
   }, [professor]);
 
@@ -103,8 +103,8 @@ export default function ProfessorForm() {
           <FormLabel>Department</FormLabel>
           <Select
             placeholder='Select...'
-            {...register('departmentId')}
-            isInvalid={!!errors.departmentId}
+            {...register('dptId')}
+            isInvalid={!!errors.dptId}
           >
             {departments.map((department, index) => (
               <option key={index} value={department.id}>
@@ -112,7 +112,7 @@ export default function ProfessorForm() {
               </option>
             ))}
           </Select>
-          <FormErrorMessage>{errors?.departmentId?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors?.dptId?.message}</FormErrorMessage>
         </FormControl>
 
         <Stack display='flex' flexDirection='row'>

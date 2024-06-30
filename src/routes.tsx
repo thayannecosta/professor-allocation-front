@@ -9,6 +9,8 @@ import Professor from './pages/Professor';
 import ProfessorForm from './pages/Professor/ProfessorForm';
 import DepartmentForm from "./pages/Department/DepartmentForm"
 import Page from './components/Page';
+import CourseForm from './pages/Course/CourseForm';
+import AllocationForm from './pages/Allocation/AllocationForm';
 
 function AppRoutes() {
   return (
@@ -23,10 +25,16 @@ function AppRoutes() {
         >
           <Route path='/' element={<Home />} />
 
-          <Route path='/allocation' element={<Allocation />} />
-          <Route path='/course' element={<Course />} />
-          {/* <Route path='/department' element={<Department />} /> */}
-
+          <Route path='/allocation'>
+            <Route index element={<Allocation />} />
+            <Route path='create' element={<AllocationForm />} />
+            <Route path=':id/update' element={<AllocationForm />} />
+          </Route>
+          <Route path='/course'>
+            <Route index element={<Course />} />
+            <Route path='create' element={<CourseForm />} />
+            <Route path=':id/update' element={<CourseForm />} />
+          </Route>
           <Route path='/professor'>
             <Route index element={<Professor />} />
             <Route path='create' element={<ProfessorForm />} />

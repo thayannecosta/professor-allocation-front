@@ -19,9 +19,9 @@ import env from '../../utils/env';
 import z from 'zod';
 
 const schema = z.object({
-  dayOfWeek: z.string().nonempty(),
-  startHour: z.string().nonempty(),
-  endHour: z.string().nonempty(),
+  day: z.string().nonempty(),
+  start: z.string().nonempty(),
+  end: z.string().nonempty(),
   professorId: z.string().nonempty(),
   courseId: z.string().nonempty(),
 });
@@ -45,11 +45,11 @@ export default function AllocationForm() {
 
   useEffect(() => {
     if (allocation) {
-      setValue('dayOfWeek', allocation.dayOfWeek);
-      setValue('startHour', allocation.startHour);
-      setValue('endHour', allocation.endHour);
-      setValue('professorId', allocation.professorId);
-      setValue('courseId', allocation.courseId);
+      setValue('day', allocation.day);
+      setValue('start', allocation.start);
+      setValue('end', allocation.end);
+      setValue('professorId', String(allocation.professor.id));
+      setValue('courseId', String(allocation.course.id));
     }
   }, [allocation, setValue]);
 
@@ -57,9 +57,9 @@ export default function AllocationForm() {
     const hasConflict = allocations.some(
       (alloc: any) =>
         alloc.professorId === form.professorId &&
-        alloc.dayOfWeek === form.dayOfWeek &&
-        ((alloc.startHour <= form.startHour && form.startHour < alloc.endHour) ||
-         (alloc.startHour < form.endHour && form.endHour <= alloc.endHour))
+        alloc.day === form.day &&
+        ((alloc.start <= form.start && form.start < alloc.end) ||
+         (alloc.start < form.end && form.end <= alloc.end))
     );
 
     if (hasConflict) {
@@ -69,6 +69,9 @@ export default function AllocationForm() {
         description: 'The selected professor is already allocated at this time.',
       });
     }
+
+    form.start = `${form.start.substring(0, 5)}:00`
+    form.end = `${form.end.substring(0, 5)}:00`
 
     const response = await fetch(
       `${env.VITE_BACKEND_URL}/allocations${id ? `/${id}` : ''}`,
@@ -93,37 +96,37 @@ export default function AllocationForm() {
       status: 'success',
     });
 
-    navigate('/allocations');
+    navigate('/allocation');
   }
 
   return (
     <Page title={`${id ? 'Update' : 'Create'} Allocation`}>
       <Stack gap={4}>
-        <FormControl isRequired isInvalid={!!errors.dayOfWeek}>
+        <FormControl isRequired isInvalid={!!errors.day}>
           <FormLabel>Day of Week</FormLabel>
-          <Select {...register('dayOfWeek')}>
+          <Select {...register('day')}>
             <option value="">Select a day</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
+            <option value="MONDAY">Monday</option>
+            <option value="TUESDAY">Tuesday</option>
+            <option value="WEDNESDAY">Wednesday</option>
+            <option value="THURSDAY">Thursday</option>
+            <option value="FRIDAY">Friday</option>
+            <option value="SATURDAY">Saturday</option>
+            <option value="SUNDAY">Sunday</option>
           </Select>
-          <FormErrorMessage>{errors?.dayOfWeek?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors?.day?.message}</FormErrorMessage>
         </FormControl>
 
-        <FormControl isRequired isInvalid={!!errors.startHour}>
+        <FormControl isRequired isInvalid={!!errors.start}>
           <FormLabel>Start Hour</FormLabel>
-          <Input type='time' {...register('startHour')} />
-          <FormErrorMessage>{errors?.startHour?.message}</FormErrorMessage>
+          <Input type='time' {...register('start')} />
+          <FormErrorMessage>{errors?.start?.message}</FormErrorMessage>
         </FormControl>
 
-        <FormControl isRequired isInvalid={!!errors.endHour}>
+        <FormControl isRequired isInvalid={!!errors.end}>
           <FormLabel>End Hour</FormLabel>
-          <Input type='time' {...register('endHour')} />
-          <FormErrorMessage>{errors?.endHour?.message}</FormErrorMessage>
+          <Input type='time' {...register('end')} />
+          <FormErrorMessage>{errors?.end?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl isRequired isInvalid={!!errors.professorId}>
@@ -153,7 +156,7 @@ export default function AllocationForm() {
         </FormControl>
 
         <Stack display='flex' flexDirection='row'>
-          <Button as={Link} to='/allocations'>
+          <Button as={Link} to='/allocation'>
             Cancel
           </Button>
           <Button colorScheme='facebook' onClick={handleSubmit(onSubmit)}>

@@ -3,6 +3,7 @@ import {
   Flex,
   Text,
   IconButton,
+  Image,
   Stack,
   Collapse,
   Icon,
@@ -13,13 +14,16 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Spacer,
+  Center,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import NAV_ITEMS, { NavItem } from '../utils/routes.util';
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Box>
@@ -34,34 +38,22 @@ export default function Header() {
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}
       >
-        <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
-        >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}
-          >
-            Fafire Allocation
-          </Text>
-
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
+        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>            
+            <Link to=''>
+              <Image
+                alt={'Unifafire logo'}
+                objectFit={'fill'}
+                src={
+                  '/header.png'
+                }
+              />
+            </Link>
+            <Spacer />
+            <Flex display={{ base: 'none', md: 'flex' }} >
+              <Center><DesktopNav /></Center>              
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />

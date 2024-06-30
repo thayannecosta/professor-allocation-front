@@ -3,9 +3,9 @@ import Hero from '../../components/Hero';
 function Home() {
   return (
     <Hero
-      title='Fafire Allocation'
+      title='Allocation'
       subtitle='Gestão fácil de horários'
-      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      description="No mundo acadêmico, a gestão de horários é uma tarefa crucial que exige precisão e eficiência. A ALLOCATION surge como uma solução inovadora para facilitar a organização de horários, garantindo que estudantes, professores e administradores possam gerenciar suas rotinas de maneira mais eficaz. Este sistema foi desenvolvido com o intuito de otimizar o tempo e os recursos, minimizando conflitos de horários e melhorando a experiência educacional."
     />
   );
 }
