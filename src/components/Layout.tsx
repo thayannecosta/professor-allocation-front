@@ -1,7 +1,7 @@
 import Footer from './Footer';
 import Header from './Header';
 
-function Layout(props) {
+function Layout(props: any) {
   return (
     <div>
       <Header />

@@ -7,7 +7,9 @@ import env from './utils/env';
 
 const CACHE_KEY = '@swr/cache';
 
-function localStorageProvider() {
+import { Cache } from 'swr';
+
+function localStorageProvider(cache: Readonly<Cache<any>>): Cache<any> {
   const map = new Map(JSON.parse(localStorage.getItem(CACHE_KEY) || '[]'));
 
   window.addEventListener('beforeunload', () => {
@@ -16,7 +18,7 @@ function localStorageProvider() {
     localStorage.setItem(CACHE_KEY, appCache);
   });
 
-  return map;
+  return cache;
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

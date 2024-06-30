@@ -24,7 +24,7 @@ function ListView(props: ListViewProps) {
     );
 
     if (response.ok) {
-      mutate((rows) => rows.filter((row) => row.id !== id), {
+      mutate((rows: any) => rows.filter((row: any) => row.id !== id), {
         revalidate: false,
       });
 

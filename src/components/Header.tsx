@@ -2,7 +2,6 @@ import {
   Box,
   Flex,
   Text,
-  IconButton,
   Image,
   Stack,
   Collapse,
@@ -12,18 +11,16 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Spacer,
   Center,
 } from '@chakra-ui/react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import NAV_ITEMS, { NavItem } from '../utils/routes.util';
 
 export default function Header() {
-  const { isOpen, onToggle } = useDisclosure();
-  const navigate = useNavigate();
+  const { isOpen } = useDisclosure();
 
   return (
     <Box>
