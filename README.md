@@ -3,7 +3,8 @@
 
 Um sistema de alocação de professores desenvolvido em Java React. 👨‍💻 👩‍💻
 
-Repositório do Back-End: ![GitHub](https://github.com/oliveruh/professor-allocation-thayruhlili)
+Repositório do Back-End:  <img src="https://skillicons.dev/icons?i=java&theme=dark" height="20">
+ [GitHub](https://github.com/oliveruh/professor-allocation-thayruhlili)
 
 ## Descrição :page_with_curl:
 
