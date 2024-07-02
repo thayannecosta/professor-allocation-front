@@ -3,6 +3,8 @@
 
 Um sistema de alocação de professores desenvolvido em Java React. 👨‍💻 👩‍💻
 
+LINK do projeto online: https://professor-allocation.netlify.app
+
 Repositório do Back-End:  <img src="https://skillicons.dev/icons?i=java&theme=dark" height="20">
  [GitHub](https://github.com/oliveruh/professor-allocation-thayruhlili)
 
